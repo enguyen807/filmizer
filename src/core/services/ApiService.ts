@@ -6,8 +6,6 @@ import VueAxios from "vue-axios";
 const headers: Readonly<Record<string, string | boolean>> = {
   Accept: "application/json",
   "Content-Type": "application/json; charset=utf-8",
-  "Access-Control-Allow-Credentials": true,
-  "X-Requested-With": "XMLHttpRequest",
 };
 
 /**
@@ -37,7 +35,8 @@ class ApiService {
   public static setRequestInterceptor(): void {
     ApiService.axiosInstance.interceptors.request.use(
       (config) => {
-        config.headers.Authorization = `Bearer ${import.meta.env.TMDB_API_KEY_AUTH}`;
+        console.log(config);
+        config.headers.Authorization = `Bearer ${import.meta.env.VITE_TMDB_API_KEY_AUTH}`;
         return config;
       },
       (error) =>  Promise.reject(error)
