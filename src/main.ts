@@ -14,5 +14,7 @@ app.use(createPinia())
 app.use(router)
 
 ApiService.init(app);
+ApiService.setRequestInterceptor();
+ApiService.setResponseInterceptor();
 
 app.mount('#app')
