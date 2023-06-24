@@ -35,7 +35,6 @@ class ApiService {
   public static setRequestInterceptor(): void {
     ApiService.axiosInstance.interceptors.request.use(
       (config) => {
-        console.log(config);
         config.headers.Authorization = `Bearer ${import.meta.env.VITE_TMDB_API_KEY_AUTH}`;
         return config;
       },
